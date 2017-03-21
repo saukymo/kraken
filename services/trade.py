@@ -47,7 +47,7 @@ def get_open_order(client):
 				'opened': moment.unix(float(order.get('opentm')), utc=True).timezone("Asia/Shanghai").format("YYYY-M-D H:m:s")
 			}
 		open_orders.append(new_order)
-	return sorted(open_orders, key=lambda order: order.get('closed'), reverse=True)
+	return sorted(open_orders, key=lambda order: order.get('opened'), reverse=True)
 
 @krakenex_conn
 def get_closed_order(client):
