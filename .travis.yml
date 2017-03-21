@@ -18,9 +18,10 @@ script:
   - python --version
 
 after_success:
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-  - docker push USER/REPO;
-  - sshpass -p $VPS_PASSWORD ssh saukymo@45.32.137.234 echo 'OK' > a.txt
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker build -t shaobol/kraken:$TRAVIS_BRANCH-$TRAVIS_BUILD_ID . 
+  - docker push shaobol/kraken:$TRAVIS_BRANCH-$TRAVIS_BUILD_ID;
+  - sshpass -p $VPS_PASSWORD ssh -o stricthostkeychecking=no saukymo@45.32.137.234 './deploy.sh'
 
 
 
