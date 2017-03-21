@@ -40,4 +40,4 @@ def get_account():
 	return render_template('account.html', assets=assets, total=total, opened_orders=opened_orders, closed_orders=closed_orders)
 
 if __name__ == "__main__":
-	app.run(debug=True)
+	app.run(debug=True, host='0.0.0.0')
