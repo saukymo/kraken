@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>{% block title %}{% endblock %} - Kraken</title>
+    {% endblock %}
+</head>
+<body>
+    <div class="container">
+
+        {% block content %}{% endblock %}
+
+        <footer class="col-lg-12">
+            <p>Made by <a href="http://blog.mkdef.com" rel="nofollow">无生</a>. Contact him at <a href="mailto:shaobo@mkdef.com">shaobo@mkdef.com</a></p>
+
+            <p>Code released under the MIT License.</p>
+
+            <p>Based on <a href="http://getbootstrap.com" rel="nofollow">Bootstrap</a>. Icons from <a href="http://fortawesome.github.io/Font-Awesome/" rel="nofollow">Font Awesome</a>. Web fonts from <a href="http://www.google.com/webfonts" rel="nofollow">Google</a>.</p>
+    </footer>
+    </div>
+    
+</body>
+</html>

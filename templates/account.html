@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+{% block title %} Account {% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+	<div class="col-lg-12">
+		<div class="page-header">
+	    	<h1>Overview</h1>
+	    </div>
+	    <h3>Balance</h3>	
+	    <table class="table table-hover ">
+	    	<tbody>
+		    	<tr>
+		    		<th>
+	    				Asset
+	    			</th>
+	    			<th>
+	    				Amount
+	    			</th>
+	    			<th>
+	    				Price
+	    			</th>
+	    			<th>
+	    				Total
+	    			</th>
+		    	</tr>
+		    	{% for asset in assets %}
+		    		<tr>
+		    			<td>
+		    				{{ asset.asset }}
+		    			</td>
+		    			<td>
+		    				{{ asset.amount }}
+		    			</td>
+		    			<td>
+		    				{{ asset.price }}
+		    			</td>
+		    			<td>
+		    				{{ asset.total }}
+		    			</td>
+		    		</tr>
+		    	{% endfor %}
+		    	<tr>
+		    		<td>
+	    				Total (USD)
+	    			</td>
+	    			<td>
+	    				---
+	    			</td>
+	    			<td>
+	    				---
+	    			</td>
+	    			<td>
+	    				{{ total |round(4)}}
+	    			</td>
+		    	</tr>
+	    	</tbody>
+	   	</table>
+	   	<h3>Open Orders</h3>	
+	    <table class="table table-hover ">
+	    	<tbody>
+		    	<tr>
+		    		<th>
+	    				Order ID
+	    			</th>
+	    			<th>
+	    				Order Type
+	    			</th>
+	    			<th>
+	    				Pair
+	    			</th>
+	    			<th>
+	    				Price
+	    			</th>
+	    			<th>
+	    				Fee
+	    			</th>
+	    			<th>
+	    				Volumn
+	    			</th>
+	    			<th>
+	    				Cost
+	    			</th>
+	    			<th>
+	    				Status
+	    			</th>
+	    			<th>
+	    				Opened
+	    			</th>
+		    	</tr>
+		    	{% for order in opened_orders %}
+		    		<tr>
+		    			<td>
+		    				{{ order.order_id }}
+		    			</td>
+		    			<td>
+		    				{{ order.order_type }}
+		    			</td>
+		    			<td>
+		    				{{ order.pair }}
+		    			</td>
+		    			<td>
+		    				{{ order.price }}
+		    			</td>
+		    			<td>
+		    				{{ order.fee }}
+		    			</td>
+		    			<td>
+		    				{{ order.volumn }}
+		    			</td>
+		    			<td>
+		    				{{ order.cost }}
+		    			</td>
+		    			<td>
+		    				{{ order.status }}
+		    			</td>
+		    			<td>
+		    				{{ order.opened }}
+		    			</td>
+		    		</tr>
+		    	{% endfor %}
+	    	</tbody>
+	   	</table>
+
+	   	<h3>Closed Orders</h3>	
+	    <table class="table table-hover ">
+	    	<tbody>
+		    	<tr>
+		    		<th>
+	    				Order ID
+	    			</th>
+	    			<th>
+	    				Order Type
+	    			</th>
+	    			<th>
+	    				Pair
+	    			</th>
+	    			<th>
+	    				Price
+	    			</th>
+	    			<th>
+	    				Fee
+	    			</th>
+	    			<th>
+	    				Volumn
+	    			</th>
+	    			<th>
+	    				Cost
+	    			</th>
+	    			<th>
+	    				Status
+	    			</th>
+	    			<th>
+	    				Closed
+	    			</th>
+		    	</tr>
+		    	{% for order in closed_orders %}
+		    		<tr>
+		    			<td>
+		    				{{ order.order_id }}
+		    			</td>
+		    			<td>
+		    				{{ order.order_type }}
+		    			</td>
+		    			<td>
+		    				{{ order.pair }}
+		    			</td>
+		    			<td>
+		    				{{ order.price }}
+		    			</td>
+		    			<td>
+		    				{{ order.fee }}
+		    			</td>
+		    			<td>
+		    				{{ order.volumn }}
+		    			</td>
+		    			<td>
+		    				{{ order.cost }}
+		    			</td>
+		    			<td>
+		    				{{ order.status }}
+		    			</td>
+		    			<td>
+		    				{{ order.closed }}
+		    			</td>
+		    		</tr>
+		    	{% endfor %}
+	    	</tbody>
+	   	</table>
+	    <!-- <p class="lead">
+	    	{{ balance }}
+	    </p> -->
+    </div>
+{% endblock %}
