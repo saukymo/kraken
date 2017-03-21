@@ -1,0 +1,23 @@
+sudo: required
+
+language: python
+
+services:
+  - docker
+
+python:
+    - "2.7"
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install sshpass
+
+install: "pip install -r requirements.txt"
+
+after_success:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  - docker push USER/REPO;
+  - sshpass -p $VPS_PASSWORD ssh saukymo@45.32.137.234 echo 'OK' > a.txt
+  
+
+
