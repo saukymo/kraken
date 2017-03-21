@@ -15,8 +15,7 @@ before_install:
 install: "pip install -r requirements.txt"
 
 script: 
-  - python app.py
-  
+
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
   - docker push USER/REPO;
