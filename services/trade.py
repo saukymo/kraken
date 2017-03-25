@@ -1,5 +1,4 @@
 """Trade service to get user's private account information and orders."""
-
 from krakenex import API, connection
 
 from models.asset import Asset
@@ -30,14 +29,13 @@ def get_account_info(client):
     """Get user's balance info."""
     assets = []
     total = 0
-    balance = client.query_private('Balance', {})
-    print(balance)
-    if not balance.get('result'):
-        print(balance.get('error'))
-        return
-    else:
-        balance = balance.get('result')
-    print(balance)
+    response = client.query_private('Balance', {})
+    balance = response.get('result')
+    if not balance:
+        from app import sentry
+        sentry.captureMessage(response.get('error'))
+        return None, None
+
     # TODO:
     # Collect all paris used in balance and query them once together.
     pair_list = [asset + 'ZUSD' for asset in balance.keys() if asset[0] == 'X']
