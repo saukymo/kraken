@@ -9,7 +9,7 @@ class Config(object):
             'id': 'cronjob',
             'func': 'app:cron_job',
             'trigger': 'cron',
-            'hour': '*/1',
+            'minute': '*/5',
         }
     ]
 

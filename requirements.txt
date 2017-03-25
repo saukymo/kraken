@@ -2,3 +2,5 @@ Flask
 moment
 flask-apscheduler
 peewee
+raven
+blinker

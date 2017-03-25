@@ -30,7 +30,14 @@ def get_account_info(client):
     """Get user's balance info."""
     assets = []
     total = 0
-    balance = client.query_private('Balance', {}).get('result')
+    balance = client.query_private('Balance', {})
+    print(balance)
+    if not balance.get('result'):
+        print(balance.get('error'))
+        return
+    else:
+        balance = balance.get('result')
+    print(balance)
     # TODO:
     # Collect all paris used in balance and query them once together.
     pair_list = [asset + 'ZUSD' for asset in balance.keys() if asset[0] == 'X']
