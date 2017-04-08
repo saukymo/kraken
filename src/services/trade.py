@@ -41,16 +41,17 @@ def get_account_info(client):
     pair_list = [asset + 'ZUSD' for asset in balance.keys() if asset[0] == 'X']
     response = client.query_public('Ticker', {'pair': ','.join(pair_list)})
     pair_price = response.get('result')
+    print(response)
     for asset in balance.keys():
         if asset[0] == 'X':
             pair_name = asset + 'ZUSD'
             new_asset = Asset(asset, float(balance.get(asset)), float(
-                pair_price.get(pair_name).get('c')[0])).to_dict()
+                pair_price.get(pair_name).get('c')[0]))
         else:
             new_asset = Asset(asset, amount=float(balance.get(
-                asset)), total=float(balance.get(asset))).to_dict()
-        assets.append(new_asset)
-        total += new_asset.get('total')
+                asset)), total=float(balance.get(asset)))
+        assets.append(new_asset.to_dict())
+        total += new_asset.total
     return assets, total
 
 
